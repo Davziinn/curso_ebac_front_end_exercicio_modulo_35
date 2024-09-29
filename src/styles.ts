@@ -3,7 +3,9 @@ import { createGlobalStyle } from 'styled-components'
 export const cores = {
   corTexto: '#e66767',
   corFundo: '#ffebd9',
-  branco: '#fff'
+  branco: '#fff',
+  corCard: '#FFFFFF;',
+  corHover: '#d55d5d'
 }
 
 export const GlobalCss = createGlobalStyle`

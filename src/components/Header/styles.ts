@@ -26,3 +26,9 @@ export const Titulo = styled.h1`
   margin-bottom: 20px;
   color: ${cores.corTexto};
 `
+
+export const Home = styled.h2`
+  color: #ccc;
+  margin: 20px 0;
+  padding-left: 20px;
+`
