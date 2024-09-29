@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
+import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
   background-color: ${cores.corCard};
@@ -41,21 +42,23 @@ export const Image = styled.img`
   padding: 0;
 `
 
-export const Button = styled.button`
+export const StyledLink = styled(Link)`
   background-color: ${cores.corTexto};
   color: ${cores.branco};
   font-family: Roboto;
   font-size: 14px;
   font-weight: bold;
-  border: none;
   padding: 10px 16px;
-  cursor: pointer;
-  margin: 8px 8px;
+  margin: 8px;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  width: 30%;
   align-self: flex-start;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: ${cores.corTexto};
+    background-color: ${cores.corHover};
   }
 `
 

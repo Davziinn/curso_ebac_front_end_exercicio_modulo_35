@@ -1,6 +1,5 @@
 import Tag from '../Tag'
-// import sushi from '../../assets/images/sushi.png'
-import { Titulo, Card, Descricao, Image, Button, Infos } from './styles'
+import { Titulo, Card, Descricao, Image, Infos, StyledLink } from './styles'
 
 type Props = {
   title: string
@@ -19,7 +18,7 @@ const Product = ({ description, image, infos, title }: Props) => (
     </Infos>
     <Titulo>{title}</Titulo>
     <Descricao>{description}</Descricao>
-    <Button type="button">Saiba Mais</Button>
+    <StyledLink to="/perfil">Saiba Mais</StyledLink>
   </Card>
 )
 
