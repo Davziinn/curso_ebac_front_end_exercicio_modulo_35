@@ -17,12 +17,18 @@ export const Card = styled.div`
   }
 `
 
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 8px 0;
+  margin-top: 8px;
+`
+
 export const Titulo = styled.h3`
   font-family: Roboto;
   font-size: 18px;
   font-weight: bold;
-  padding: 4px 8px 0;
-  margin-top: 8px;
 `
 
 export const Descricao = styled.p`
@@ -68,4 +74,20 @@ export const Infos = styled.div`
   right: 16px;
   display: flex;
   gap: 8px;
+`
+
+export const Avaliacao = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+  color: ${cores.corTexto};
+`
+
+export const EstrelaIcone = styled.img`
+  width: 16px;
+  height: 16px;
+  margin-left: 5px;
 `
