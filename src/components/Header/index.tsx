@@ -1,13 +1,8 @@
-import { Titulo, HeaderTop, ImgLogo, Home } from './styles'
+import { Titulo, HeaderTop, ImgLogo } from './styles'
 import logo from '../../assets/images/logo.svg'
 
-type Props = {
-  titulo: string
-}
-
-const Header = ({ titulo }: Props) => (
+const Header = () => (
   <>
-    <Home>{titulo}</Home>
     <HeaderTop>
       <ImgLogo src={logo} alt="Logo" />
       <Titulo>

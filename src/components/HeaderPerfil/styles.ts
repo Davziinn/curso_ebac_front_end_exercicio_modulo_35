@@ -8,28 +8,25 @@ interface ImagemProps {
 
 export const Header = styled.h2`
   color: #ccc;
-  margin: 20px 0;
   padding-left: 20px;
+  text-align: left; /* Alinhado à esquerda */
 `
 
 export const Perfil = styled.div`
   width: 100%;
   height: 186px;
-  top: -23px;
   background-color: ${cores.corFundo};
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Distribuição do espaço */
   align-items: center;
   padding: 0 20px;
 `
 
 export const Logo = styled(Link)`
-  width: 120px;
-  height: auto;
   display: block;
-
+  margin: 0 auto; /* Centraliza o logo */
   img {
-    width: 100%;
+    width: 120px;
     height: auto;
   }
 `
@@ -41,7 +38,7 @@ export const CarrinhoInfo = styled.p`
 
 export const Imagem = styled.div<ImagemProps>`
   width: 100%;
-  height: 280px;
+  height: 400px; /* Aumenta a altura da imagem */
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: cover;
@@ -61,33 +58,57 @@ export const Imagem = styled.div<ImagemProps>`
 `
 
 export const NomeComida = styled.h4`
-  width: 101px;
-  height: 33.25px;
   position: absolute;
   top: 20px;
-  left: 20px;
+  left: 40px;
   font-family: Roboto;
   font-size: 32px;
   font-weight: 100;
-  line-height: 37.5px;
-  text-align: left;
   color: #fff;
   z-index: 2;
-  padding-left: 170px;
 `
 
 export const NomeRestaurante = styled.p`
-  width: auto;
-  height: auto;
   position: absolute;
   bottom: 20px;
-  left: 20px;
+  left: 40px;
   font-family: Roboto;
   font-size: 32px;
   font-weight: 900;
-  line-height: 37.5px;
-  text-align: left;
   color: #fff;
   z-index: 2;
-  padding-left: 170px;
+`
+
+export const CardsWrapper = styled.div`
+  display: flex;
+  justify-content: space-around; /* Alinha os cards com espaçamento */
+  padding: 20px 0;
+`
+
+export const Card = styled.div`
+  width: 250px;
+  border: 1px solid ${cores.corFundo};
+  background-color: ${cores.corCard};
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  img {
+    width: 100%;
+  }
+  h4 {
+    font-size: 20px;
+    margin: 10px 0;
+  }
+  p {
+    font-size: 16px;
+    margin: 10px;
+  }
+  button {
+    background-color: rgba(255, 235, 217, 1);
+    color: white;
+    padding: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
 `

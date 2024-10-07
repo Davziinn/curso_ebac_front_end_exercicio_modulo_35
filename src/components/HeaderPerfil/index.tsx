@@ -11,13 +11,9 @@ import {
 import logo from '../../assets/images/logo.svg'
 import macarrao from '../../assets/images/comidaItaliana.png'
 
-type Props = {
-  titulo: string
-}
-
-const HeaderPerfil = ({ titulo }: Props) => (
+const HeaderPerfil = () => (
   <>
-    <Header>{titulo}</Header>
+    <Header></Header>
     <Perfil>
       <h3>Restaurantes</h3>
       <Logo to="/">

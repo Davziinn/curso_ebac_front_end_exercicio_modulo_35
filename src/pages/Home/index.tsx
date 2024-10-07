@@ -64,7 +64,7 @@ const foods: Food[] = [
 
 const Home = () => (
   <>
-    <Header titulo="Home" />
+    <Header />
     <ProductList foods={foods} />
   </>
 )

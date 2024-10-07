@@ -3,7 +3,7 @@ import HeaderPerfil from '../../components/HeaderPerfil'
 
 const Perfil = () => (
   <>
-    <HeaderPerfil titulo="Perfil" />
+    <HeaderPerfil />
     <FoodsList />
   </>
 )
