@@ -12,6 +12,7 @@ import {
 } from './styles'
 
 import estrela from '../../assets/images/estrela.png'
+import React from 'react'
 
 type Props = {
   title: string

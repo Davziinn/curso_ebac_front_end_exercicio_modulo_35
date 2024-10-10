@@ -1,5 +1,6 @@
 import { Titulo, HeaderTop, ImgLogo } from './styles'
 import logo from '../../assets/images/logo.svg'
+import React from 'react'
 
 const Header = () => (
   <>

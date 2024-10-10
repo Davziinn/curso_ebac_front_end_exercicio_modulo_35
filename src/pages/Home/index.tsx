@@ -1,72 +1,69 @@
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import Header from '../../components/Header'
 import ProductList from '../../components/ProductList'
 import Food from '../../models/Food'
 
-import sushi from '../../assets/images/sushi.png'
-import pasta from '../../assets/images/italiana.png'
+export type Cardapio = {
+  foto: string
+  preco: number
+  id: number
+  nome: string
+  description: string
+  porcao: string
+}
 
-const foods: Food[] = [
-  {
-    id: 1,
-    description:
-      'Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida. Experimente o Japão sem sair do lar com nosso delivery!',
-    title: 'Hioki Sushi',
-    infos: ['Destaque da Semana', 'Japonesa'],
-    image: sushi,
-    rating: 4.5
-  },
-  {
-    id: 2,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    title: 'La Dolce Vita Trattoria',
-    infos: ['Italiana'],
-    image: pasta,
-    rating: 4.7
-  },
-  {
-    id: 3,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    title: 'La Dolce Vita Trattoria',
-    infos: ['Italiana'],
-    image: pasta,
-    rating: 4.3
-  },
-  {
-    id: 4,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    title: 'La Dolce Vita Trattoria',
-    infos: ['Italiana'],
-    image: pasta,
-    rating: 4.6
-  },
-  {
-    id: 5,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    title: 'La Dolce Vita Trattoria',
-    infos: ['Italiana'],
-    image: pasta,
-    rating: 4.4
-  },
-  {
-    id: 6,
-    description:
-      'A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!',
-    title: 'La Dolce Vita Trattoria',
-    infos: ['Italiana'],
-    image: pasta,
-    rating: 4.8
+type Restaurante = {
+  id: number
+  titulo: string
+  destaque?: boolean
+  tipo: string
+  avaliacao: string
+  descricao: string
+  capa: string
+  description: string
+  image: string
+  title: string
+  infos: string[]
+  rating: string
+  foods: Cardapio[]
+}
+
+const Home = () => {
+  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([])
+  const [foods, setFoods] = useState<Food[]>([])
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    fetch('https://fake-api-tau.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => {
+        setRestaurantes(res)
+
+        const mappedFoods: Food[] = res.map((restaurante: Restaurante) => ({
+          id: restaurante.id,
+          description: restaurante.descricao,
+          image: restaurante.capa,
+          title: restaurante.titulo,
+          infos: restaurante.tipo.split(','),
+          rating: parseFloat(restaurante.avaliacao)
+        }))
+
+        setFoods(mappedFoods)
+      })
+  }, [])
+
+  const handleRestauranteClick = (id: number) => {
+    navigate(`/restaurante/${id}`)
   }
-]
 
-const Home = () => (
-  <>
-    <Header />
-    <ProductList foods={foods} />
-  </>
-)
+  return (
+    <>
+      <Header />
+      <ProductList foods={foods} onClickRestaurante={handleRestauranteClick} />
+    </>
+  )
+}
 
 export default Home

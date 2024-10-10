@@ -1,24 +1,26 @@
-import Product from '../Produtc'
 import { List, Container, ListProduct } from './styles'
-
 import Food from '../../models/Food'
+import Product from '../Produtc'
 
 export type Props = {
   foods: Food[]
+  onClickRestaurante: (id: number) => void
 }
 
-const ProductList = ({ foods }: Props) => (
+const ProductList = ({ foods, onClickRestaurante }: Props) => (
   <Container>
     <List>
-      {foods.map((game) => (
-        <ListProduct key={game.id}>
-          <Product
-            description={game.description}
-            image={game.image}
-            title={game.title}
-            infos={game.infos}
-            rating={game.rating}
-          />
+      {foods.map((food) => (
+        <ListProduct key={food.id}>
+          <div onClick={() => onClickRestaurante(food.id)}>
+            <Product
+              description={food.description}
+              image={food.image}
+              title={food.title}
+              infos={food.infos}
+              rating={food.rating}
+            />
+          </div>
         </ListProduct>
       ))}
     </List>

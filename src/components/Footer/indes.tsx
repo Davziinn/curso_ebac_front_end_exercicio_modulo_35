@@ -1,3 +1,4 @@
+import React from 'react'
 import logo from '../../assets/images/logo.svg'
 import { Container, Imagem, Redes, RedesLista, H4 } from './styles'
 import { FaInstagram, FaFacebookF, FaTwitter } from 'react-icons/fa'

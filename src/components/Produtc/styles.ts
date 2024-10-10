@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-import { TagContainer } from '../Tag/styles'
 import { Link } from 'react-router-dom'
 
 export const Card = styled.div`
@@ -11,10 +10,7 @@ export const Card = styled.div`
   flex-direction: column;
   padding: 0;
   position: relative;
-
-  ${TagContainer} {
-    margin-right: 8px;
-  }
+  overflow: hidden;
 `
 
 export const HeaderContainer = styled.div`
@@ -41,7 +37,8 @@ export const Descricao = styled.p`
 
 export const Image = styled.img`
   width: 100%;
-  height: auto;
+  height: 200px;
+  object-fit: cover;
   display: block;
   margin: 0;
   border-bottom: 1px solid ${cores.corTexto};
