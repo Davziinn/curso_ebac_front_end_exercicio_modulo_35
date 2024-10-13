@@ -1,25 +1,25 @@
 class Food {
-  description: string
-  image: string
-  title: string
-  infos: string[]
   id: number
-  rating: number
+  nome: string
+  descricao: string
+  foto: string
+  porcao: string
+  preco: number
 
   constructor(
-    description: string,
-    image: string,
-    title: string,
-    infos: string[],
     id: number,
-    rating: number
+    nome: string,
+    descricao: string,
+    foto: string,
+    porcao: string,
+    preco: number
   ) {
-    this.description = description
-    this.image = image
-    this.title = title
-    this.infos = infos
     this.id = id
-    this.rating = rating
+    this.nome = nome
+    this.descricao = descricao
+    this.foto = foto
+    this.porcao = porcao
+    this.preco = preco
   }
 }
 

@@ -2,9 +2,9 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 
 export const Container = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px;
   padding: 16px;
   max-width: 960px;
   margin: 0 auto;
@@ -12,25 +12,29 @@ export const Container = styled.div`
 
 export const Card = styled.div`
   background-color: ${cores.corTexto};
-  width: 30%;
-  height: 360px;
+  height: auto;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  margin-bottom: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
 `
 
 export const Img = styled.img`
-  padding: 8px 8px;
+  width: calc(100% + 16px);
+  height: 167px;
+  object-fit: cover;
+  margin-left: -8px;
+  margin-top: -8px;
 `
 
 export const Title = styled.h2`
-  width: 124px;
   font-size: 15px;
   font-weight: bold;
   line-height: 18.75px;
   color: ${cores.branco};
-  padding-left: 8px;
+  padding: 8px 0;
+  margin: 0;
 `
 
 export const Descricao = styled.p`
@@ -40,7 +44,9 @@ export const Descricao = styled.p`
   line-height: 22px;
   text-align: left;
   color: ${cores.branco};
-  padding: 10px 8px;
+  padding: 0 8px 8px 8px;
+  margin: 0;
+  flex-grow: 1;
 `
 
 export const Button = styled.button`
@@ -53,8 +59,8 @@ export const Button = styled.button`
   padding: 8px;
   cursor: pointer;
   width: calc(100% - 16px);
-  height: auto;
-  margin: 8px;
+  height: 40px;
+  margin: 8px 0;
 
   &:hover {
     background-color: #eee;
@@ -91,8 +97,6 @@ export const ModalContent = styled.div`
 export const ModalImage = styled.img`
   width: 300px;
   height: 300px;
-  // top: 522px;
-  // left: 203px;
 `
 
 export const ModalTextContent = styled.div`
@@ -106,6 +110,7 @@ export const ModalTitle = styled.h3`
   font-size: 24px;
   margin: 0;
   margin-bottom: 16px;
+  padding-top: 16px;
 `
 
 export const ModalDescription = styled.p`

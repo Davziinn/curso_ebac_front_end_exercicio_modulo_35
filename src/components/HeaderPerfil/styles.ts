@@ -9,7 +9,7 @@ interface ImagemProps {
 export const Header = styled.h2`
   color: #ccc;
   padding-left: 20px;
-  text-align: left; /* Alinhado à esquerda */
+  text-align: left;
 `
 
 export const Perfil = styled.div`
@@ -17,14 +17,14 @@ export const Perfil = styled.div`
   height: 186px;
   background-color: ${cores.corFundo};
   display: flex;
-  justify-content: space-between; /* Distribuição do espaço */
+  justify-content: space-between;
   align-items: center;
   padding: 0 20px;
 `
 
 export const Logo = styled(Link)`
   display: block;
-  margin: 0 auto; /* Centraliza o logo */
+  margin: 0 auto;
   img {
     width: 120px;
     height: auto;
@@ -38,12 +38,16 @@ export const CarrinhoInfo = styled.p`
 
 export const Imagem = styled.div<ImagemProps>`
   width: 100%;
-  height: 400px; /* Aumenta a altura da imagem */
+  height: 400px;
   background-image: url(${(props) => props.image});
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
   position: relative;
+
+  @media (max-width: 768px) {
+    height: 250px;
+  }
 
   &::before {
     content: '';
@@ -66,6 +70,10 @@ export const NomeComida = styled.h4`
   font-weight: 100;
   color: #fff;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `
 
 export const NomeRestaurante = styled.p`
@@ -77,12 +85,17 @@ export const NomeRestaurante = styled.p`
   font-weight: 900;
   color: #fff;
   z-index: 2;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+  }
 `
 
 export const CardsWrapper = styled.div`
   display: flex;
-  justify-content: space-around; /* Alinha os cards com espaçamento */
+  justify-content: space-around;
   padding: 20px 0;
+  flex-wrap: wrap;
 `
 
 export const Card = styled.div`
@@ -92,17 +105,22 @@ export const Card = styled.div`
   border-radius: 8px;
   overflow: hidden;
   text-align: center;
+  margin: 10px;
+
   img {
     width: 100%;
   }
+
   h4 {
     font-size: 20px;
     margin: 10px 0;
   }
+
   p {
     font-size: 16px;
     margin: 10px;
   }
+
   button {
     background-color: rgba(255, 235, 217, 1);
     color: white;
@@ -110,5 +128,10 @@ export const Card = styled.div`
     border: none;
     cursor: pointer;
     width: 100%;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: rgba(255, 200, 150, 1);
+    }
   }
 `

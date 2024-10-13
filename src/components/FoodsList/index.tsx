@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import {
   Container,
   Card,
@@ -16,16 +16,26 @@ import {
   ModalTitle,
   ModalInfo
 } from './styles'
-import { foods } from './data'
-
-import pizza from '../../assets/images/pizza.png'
+import Food from '../../models/Food'
 import fechar from '../../assets/images/fechar.png'
 
-const FoodsList = () => {
-  const [modalAberto, setModalAberto] = useState(false)
+type FoodsListProps = {
+  foods: Food[]
+}
 
-  const abrirModal = () => setModalAberto(true)
-  const fecharModal = () => setModalAberto(false)
+const FoodsList = ({ foods }: FoodsListProps) => {
+  const [modalAberto, setModalAberto] = useState(false)
+  const [foodSelecionada, setFoodSelecionada] = useState<Food | null>(null)
+
+  const abrirModal = (food: Food) => {
+    setFoodSelecionada(food)
+    setModalAberto(true)
+  }
+
+  const fecharModal = () => {
+    setModalAberto(false)
+    setFoodSelecionada(null)
+  }
 
   const handleOutsideClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (e.target === e.currentTarget) {
@@ -38,42 +48,37 @@ const FoodsList = () => {
       <Container>
         {foods.map((food) => (
           <Card key={food.id}>
-            <Img src={food.image} alt={food.title} />
-            <Title>{food.title}</Title>
-            <Descricao>{food.description}</Descricao>
-            <Button onClick={abrirModal}>Adicionar ao carrinho</Button>
+            <Img src={food.foto} alt={food.nome} />
+            <Title>{food.nome}</Title>
+            <Descricao>{food.descricao}</Descricao>
+            <Button onClick={() => abrirModal(food)}>
+              Adicionar ao carrinho
+            </Button>
           </Card>
         ))}
       </Container>
 
-      <ModalContainer
-        className={modalAberto ? 'visible' : ''}
-        onClick={handleOutsideClick}
-      >
-        <ModalContent>
-          <ModalImage src={pizza} alt="Pizza Marguerita" />
-          <ModalTextContent>
-            <ModalTitle>Pizza Marguerita</ModalTitle>
-            <ModalDescription>
-              A pizza Marguerita é uma pizza clássica da culinária italiana,
-              reconhecida por sua simplicidade e sabor inigualável. Ela é feita
-              com uma base de massa fina e crocante, coberta com molho de tomate
-              fresco, queijo mussarela de alta qualidade, manjericão fresco e
-              azeite de oliva extra-virgem. A combinação de sabores é perfeita,
-              com o molho de tomate suculento e ligeiramente ácido, o queijo
-              derretido e cremoso e as folhas de manjericão frescas, que
-              adicionam um toque de sabor herbáceo. É uma pizza simples, mas
-              deliciosa, que agrada a todos os paladares e é ideal para qualquer
-              ocasião.
-            </ModalDescription>
-            <ModalInfo>Serve: de 2 a 3 pessoas</ModalInfo>
-            <ModalButton>Adicionar ao carrinho - R$ 60,90</ModalButton>
-          </ModalTextContent>
-          <ModalCloseButton onClick={fecharModal}>
-            <img src={fechar} alt="Fechar modal" />
-          </ModalCloseButton>
-        </ModalContent>
-      </ModalContainer>
+      {foodSelecionada && (
+        <ModalContainer
+          className={modalAberto ? 'visible' : ''}
+          onClick={handleOutsideClick}
+        >
+          <ModalContent>
+            <ModalImage src={foodSelecionada.foto} alt={foodSelecionada.nome} />
+            <ModalTextContent>
+              <ModalTitle>{foodSelecionada.nome}</ModalTitle>
+              <ModalDescription>{foodSelecionada.descricao}</ModalDescription>
+              <ModalInfo>Serve: {foodSelecionada.porcao}</ModalInfo>
+              <ModalButton>
+                Adicionar ao carrinho - R$ {foodSelecionada.preco}
+              </ModalButton>
+            </ModalTextContent>
+            <ModalCloseButton onClick={fecharModal}>
+              <img src={fechar} alt="Fechar modal" />
+            </ModalCloseButton>
+          </ModalContent>
+        </ModalContainer>
+      )}
     </>
   )
 }

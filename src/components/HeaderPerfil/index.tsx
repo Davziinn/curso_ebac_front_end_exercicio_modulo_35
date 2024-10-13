@@ -9,11 +9,20 @@ import {
   NomeRestaurante
 } from './styles'
 import logo from '../../assets/images/logo.svg'
-import macarrao from '../../assets/images/comidaItaliana.png'
 
-const HeaderPerfil = () => (
+type HeaderPerfilProps = {
+  nomeRestaurante: string
+  tipoComida: string
+  imagemRestaurante: string
+}
+
+const HeaderPerfil = ({
+  nomeRestaurante,
+  tipoComida,
+  imagemRestaurante
+}: HeaderPerfilProps) => (
   <>
-    <Header></Header>
+    <Header />
     <Perfil>
       <h3>Restaurantes</h3>
       <Logo to="/">
@@ -21,9 +30,9 @@ const HeaderPerfil = () => (
       </Logo>
       <CarrinhoInfo>0 produto(s) no carrinho</CarrinhoInfo>
     </Perfil>
-    <Imagem image={macarrao}>
-      <NomeComida>Italiana</NomeComida>
-      <NomeRestaurante>La Dolce Vita Trattoria</NomeRestaurante>
+    <Imagem image={imagemRestaurante}>
+      <NomeComida>{tipoComida}</NomeComida>
+      <NomeRestaurante>{nomeRestaurante}</NomeRestaurante>
     </Imagem>
   </>
 )
