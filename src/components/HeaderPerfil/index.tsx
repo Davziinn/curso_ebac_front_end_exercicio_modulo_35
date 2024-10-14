@@ -24,7 +24,7 @@ const HeaderPerfil = ({
   <>
     <Header />
     <Perfil>
-      <h3>Restaurantes</h3>
+      <h3 style={{ marginLeft: '20px' }}>Restaurantes</h3>
       <Logo to="/">
         <img src={logo} alt="logo" />
       </Logo>

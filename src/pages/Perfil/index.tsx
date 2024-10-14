@@ -20,7 +20,7 @@ const Perfil = () => {
         setRestaurante({
           nome: res.nome,
           tipo: res.tipo,
-          imagem: res.imagem
+          imagem: res.capa
         })
         setCardapio(res.cardapio)
       })

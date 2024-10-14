@@ -20,6 +20,7 @@ export const Perfil = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  position: relative;
 `
 
 export const Logo = styled(Link)`
@@ -34,6 +35,7 @@ export const Logo = styled(Link)`
 export const CarrinhoInfo = styled.p`
   font-size: 16px;
   color: ${cores.corTexto};
+  margin-right: 20px; /* Ajuste para alinhamento à direita */
 `
 
 export const Imagem = styled.div<ImagemProps>`
@@ -56,7 +58,7 @@ export const Imagem = styled.div<ImagemProps>`
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.4); /* Escurecendo a imagem */
     z-index: 1;
   }
 `
@@ -64,7 +66,7 @@ export const Imagem = styled.div<ImagemProps>`
 export const NomeComida = styled.h4`
   position: absolute;
   top: 20px;
-  left: 40px;
+  left: 40px; /* Alinhado à esquerda da imagem */
   font-family: Roboto;
   font-size: 32px;
   font-weight: 100;
@@ -79,7 +81,7 @@ export const NomeComida = styled.h4`
 export const NomeRestaurante = styled.p`
   position: absolute;
   bottom: 20px;
-  left: 40px;
+  left: 40px; /* Alinhado à esquerda na parte inferior da imagem */
   font-family: Roboto;
   font-size: 32px;
   font-weight: 900;
