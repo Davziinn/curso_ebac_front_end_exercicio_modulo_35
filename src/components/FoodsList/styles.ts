@@ -90,7 +90,7 @@ export const ModalContent = styled.div`
   padding: 20px;
   position: relative;
   width: 1024px;
-  height: 380px;
+  height: 344px;
   z-index: 1000;
 `
 
