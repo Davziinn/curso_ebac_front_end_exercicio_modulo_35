@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import HeaderPerfil from '../../components/HeaderPerfil'
 import FoodsList from '../../components/FoodsList'
+import Cart from '../../components/Cart'
 
 const Perfil = () => {
   const { id } = useParams()
@@ -34,6 +35,7 @@ const Perfil = () => {
         imagemRestaurante={restaurante.imagem}
       />
       <FoodsList foods={cardapio} />
+      <Cart />
     </>
   )
 }

@@ -18,6 +18,8 @@ import {
 } from './styles'
 import Food from '../../models/Food'
 import fechar from '../../assets/images/fechar.png'
+import { useDispatch } from 'react-redux'
+import { add } from '../../store/reducers/cart'
 
 type FoodsListProps = {
   foods: Food[]
@@ -26,6 +28,15 @@ type FoodsListProps = {
 const FoodsList = ({ foods }: FoodsListProps) => {
   const [modalAberto, setModalAberto] = useState(false)
   const [foodSelecionada, setFoodSelecionada] = useState<Food | null>(null)
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    if (foodSelecionada) {
+      dispatch(add(foodSelecionada))
+      // dispatch(open())
+    }
+  }
 
   const abrirModal = (food: Food) => {
     setFoodSelecionada(food)
@@ -69,7 +80,7 @@ const FoodsList = ({ foods }: FoodsListProps) => {
               <ModalTitle>{foodSelecionada.nome}</ModalTitle>
               <ModalDescription>{foodSelecionada.descricao}</ModalDescription>
               <ModalInfo>Serve: {foodSelecionada.porcao}</ModalInfo>
-              <ModalButton>
+              <ModalButton onClick={addToCart}>
                 Adicionar ao carrinho - R$ {foodSelecionada.preco}
               </ModalButton>
             </ModalTextContent>
