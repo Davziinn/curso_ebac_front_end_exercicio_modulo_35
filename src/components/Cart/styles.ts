@@ -33,8 +33,8 @@ export const Sidebar = styled.div`
   top: 0;
   right: 0;
   width: 360px;
-  height: 100%; /* Use height 100% para permitir que a sidebar role */
-  background-color: #f05a5a;
+  height: 100%;
+  background-color: rgba(230, 103, 103, 1);
   padding: 32px 8px 10px 8px;
   display: flex;
   flex-direction: column;

@@ -34,7 +34,6 @@ const FoodsList = ({ foods }: FoodsListProps) => {
   const addToCart = () => {
     if (foodSelecionada) {
       dispatch(add(foodSelecionada))
-      // dispatch(open())
     }
   }
 

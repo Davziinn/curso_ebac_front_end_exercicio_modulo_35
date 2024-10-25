@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import HeaderPerfil from '../../components/HeaderPerfil'
 import FoodsList from '../../components/FoodsList'
@@ -27,6 +27,10 @@ const Perfil = () => {
       })
   }, [id])
 
+  const handleBackToProducts = () => {
+    // Implemente a lógica para voltar à lista de produtos aqui
+  }
+
   return (
     <>
       <HeaderPerfil
@@ -35,7 +39,7 @@ const Perfil = () => {
         imagemRestaurante={restaurante.imagem}
       />
       <FoodsList foods={cardapio} />
-      <Cart />
+      <Cart onBackToProducts={handleBackToProducts} />
     </>
   )
 }
