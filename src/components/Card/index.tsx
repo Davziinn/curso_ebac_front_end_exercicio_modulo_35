@@ -25,7 +25,7 @@ const Card: React.FC<CardProps> = ({ onBackToCart, onBackToProducts }) => {
     if (!recipientName) errors.push('Nome do destinatário é obrigatório.')
     if (!address) errors.push('Endereço é obrigatório.')
     if (!city) errors.push('Cidade é obrigatória.')
-    if (cep.length !== 3) errors.push('CEP deve ter 3 dígitos.')
+    if (cep.length !== 8) errors.push('CEP deve ter 8 dígitos.')
     if (!houseNumber) errors.push('Número do endereço é obrigatório.')
 
     setErrorMessages(errors)
@@ -106,7 +106,7 @@ const Card: React.FC<CardProps> = ({ onBackToCart, onBackToProducts }) => {
                 type="text"
                 value={cep}
                 onChange={(e) => setCep(e.target.value.replace(/\D/g, ''))}
-                maxLength={3}
+                maxLength={8}
                 placeholder="CEP"
                 style={{ flex: 1 }}
               />
@@ -122,9 +122,9 @@ const Card: React.FC<CardProps> = ({ onBackToCart, onBackToProducts }) => {
               />
             </div>
             <div className="validation-container">
-              {errorMessages.includes('CEP deve ter 3 dígitos.') && (
+              {errorMessages.includes('CEP deve ter 8 dígitos.') && (
                 <span className="validation-message">
-                  CEP deve ter 3 dígitos.
+                  CEP deve ter 8 dígitos.
                 </span>
               )}
               {errorMessages.includes('Número do endereço é obrigatório.') && (

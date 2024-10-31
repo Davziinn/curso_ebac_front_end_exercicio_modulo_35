@@ -54,13 +54,7 @@ const Finalizado: React.FC<FinalizadoProps> = ({ onConcluir }) => {
       <MensagemFinalizado>
         <h1>
           Pedido realizado -{' '}
-          {isLoading
-            ? 'Processando...'
-            : isError
-            ? 'Erro ao carregar pedido'
-            : data
-            ? data.orderId
-            : 'Processando...'}
+          {isLoading ? 'Processando...' : 'Pedido concluido com sucesso!'}
         </h1>
         <p>
           Estamos felizes em informar que seu pedido já está em processo de
