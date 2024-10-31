@@ -12,8 +12,28 @@ const Card: React.FC<CardProps> = ({ onBackToCart, onBackToProducts }) => {
   const [showPagamento, setShowPagamento] = useState(false)
   const [showFinalizado, setShowFinalizado] = useState(false)
 
+  const [recipientName, setRecipientName] = useState('')
+  const [address, setAddress] = useState('')
+  const [city, setCity] = useState('')
+  const [cep, setCep] = useState('')
+  const [houseNumber, setHouseNumber] = useState('')
+  const [errorMessages, setErrorMessages] = useState<string[]>([])
+
+  const validateAddress = () => {
+    const errors: string[] = []
+
+    if (!recipientName) errors.push('Nome do destinatário é obrigatório.')
+    if (!address) errors.push('Endereço é obrigatório.')
+    if (!city) errors.push('Cidade é obrigatória.')
+    if (cep.length !== 3) errors.push('CEP deve ter 3 dígitos.')
+    if (!houseNumber) errors.push('Número do endereço é obrigatório.')
+
+    setErrorMessages(errors)
+    return errors.length === 0
+  }
+
   const handleContinuePayment = () => {
-    setShowPagamento(true)
+    if (validateAddress()) setShowPagamento(true)
   }
 
   const handleFinalizarPagamento = () => {
@@ -21,8 +41,8 @@ const Card: React.FC<CardProps> = ({ onBackToCart, onBackToProducts }) => {
   }
 
   const handleConcluir = () => {
-    setShowFinalizado(false) // Oculta a mensagem de finalização
-    onBackToProducts() // Ou redirecione para a lista de produtos conforme necessário
+    setShowFinalizado(false)
+    onBackToProducts()
   }
 
   return (
@@ -40,28 +60,78 @@ const Card: React.FC<CardProps> = ({ onBackToCart, onBackToProducts }) => {
           <Sidebar>
             <h2>Entrega</h2>
             <label>Quem irá receber</label>
-            <input required type="text" placeholder="Nome do destinatário" />
+            <input
+              required
+              type="text"
+              value={recipientName}
+              onChange={(e) => setRecipientName(e.target.value)}
+              placeholder="Nome do destinatário"
+            />
+            {errorMessages.includes('Nome do destinatário é obrigatório.') && (
+              <span className="validation-message">
+                Nome do destinatário é obrigatório.
+              </span>
+            )}
 
             <label>Endereço</label>
-            <input required type="text" placeholder="Digite o endereço" />
+            <input
+              required
+              type="text"
+              value={address}
+              onChange={(e) => setAddress(e.target.value)}
+              placeholder="Digite o endereço"
+            />
+            {errorMessages.includes('Endereço é obrigatório.') && (
+              <span className="validation-message">
+                Endereço é obrigatório.
+              </span>
+            )}
 
             <label>Cidade</label>
-            <input required type="text" placeholder="Digite a cidade" />
+            <input
+              required
+              type="text"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              placeholder="Digite a cidade"
+            />
+            {errorMessages.includes('Cidade é obrigatória.') && (
+              <span className="validation-message">Cidade é obrigatória.</span>
+            )}
 
             <label>CEP</label>
             <div style={{ display: 'flex', gap: '8px' }}>
               <input
                 required
                 type="text"
+                value={cep}
+                onChange={(e) => setCep(e.target.value.replace(/\D/g, ''))}
+                maxLength={3}
                 placeholder="CEP"
                 style={{ flex: 1 }}
               />
               <input
                 required
                 type="text"
+                value={houseNumber}
+                onChange={(e) =>
+                  setHouseNumber(e.target.value.replace(/\D/g, ''))
+                }
                 placeholder="Número"
                 style={{ flex: 1 }}
               />
+            </div>
+            <div className="validation-container">
+              {errorMessages.includes('CEP deve ter 3 dígitos.') && (
+                <span className="validation-message">
+                  CEP deve ter 3 dígitos.
+                </span>
+              )}
+              {errorMessages.includes('Número do endereço é obrigatório.') && (
+                <span className="validation-message">
+                  Número do endereço é obrigatório.
+                </span>
+              )}
             </div>
 
             <label>Complemento (opcional)</label>

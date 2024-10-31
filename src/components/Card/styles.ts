@@ -56,6 +56,19 @@ export const Sidebar = styled.div`
     background-color: #ffe8e8;
   }
 
+  .validation-message {
+    color: #fff;
+    font-size: 10px;
+    margin-top: -12px;
+    margin-bottom: 8px;
+  }
+
+  .validation-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+
   button {
     width: 100%;
     height: 24px;

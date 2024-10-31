@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
-
 import lixeira from '../../assets/images/lixeira.png'
 
 export const CartContainer = styled.div`

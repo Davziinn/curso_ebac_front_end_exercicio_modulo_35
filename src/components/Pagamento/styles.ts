@@ -74,3 +74,14 @@ export const Overlay = styled.div`
   background-color: rgba(0, 0, 0, 0.7);
   z-index: 0;
 `
+
+export const ValidationMessageContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 4px; /* Espaçamento entre mensagens de validação */
+`
+
+export const ValidationMessage = styled.span`
+  color: white;
+  font-size: 12px;
+`

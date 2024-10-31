@@ -45,19 +45,19 @@ export const MensagemFinalizado = styled.div`
     font-size: 14px;
     line-height: 22px;
     text-align: left;
-    color: rgba(255, 235, 217, 1);
-    margin-bottom: 24px;
+    color: #fff;
   }
 
   button {
+    margin-top: 24px;
+    padding: 12px;
     width: 100%;
-    height: 24px;
-    top: 377px;
-    left: 1014px;
-    background-color: #ffebd9;
-    color: #e66767;
+    background-color: #fff;
+    color: #f05a5a;
+    font-size: 16px;
     border: none;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 
     &:hover {
       background-color: #ffe8e8;
